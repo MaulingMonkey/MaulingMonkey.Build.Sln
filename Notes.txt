@@ -1,0 +1,53 @@
+Limitations on solution configuration / platform Names:
+	- '|' is not a sane character for configs/platforms - VS2015's UI will not even let you create such names, failing validation.
+	- '=' is not a sane character for configs/platforms - VS2015's UI will let you create such names, but will then fail to save out the affected configs/platforms.
+	- '.' is a 'sane' character for configs/platforms, despite being used as a deliniator - see I:\home\projects\other\crawl\crawl-ref\source\contrib\freetype\builds\wince\vc2005-ce\freetype.sln
+
+Observed project paths for Visual Studio Tools for Unity? (at least 4 unique project type guids because they hate stability):
+	- "Assembly-CSharp.csproj"
+	- "Assembly-CSharp-vs.csproj"
+	- "Assembly-CSharp-Editor.csproj"
+	- "Assembly-CSharp-Editor-vs.csproj"
+
+Some common template configs (Create WellKnownConfigurations ?):
+	- Debug
+	- Release
+
+
+
+Possible rough roadmap:
+
+[ ] Get initial version comitted.
+	[ ] Parse all information about all local solutions
+	[ ] Apply license & boilerplate
+	[ ] Create github repository
+	[ ] Create gitlab repository
+	[ ] Upload
+
+[ ] Refactor to preserve original formatting / unparsable solution information (such as unrecgonized ProjectSection()s or GlobalSection()s that third party extension or IDEs may introduce.)
+	[ ] Introduce and parse intermediate AST style types/nodes
+	[ ] Eliminate duplicate/redundant state to reduce chances of desync bugs
+	[ ] Eliminate extra O(N) silliness.
+
+[ ] Setup proper CI?  (I'm doing an offline equivalent currently...)
+	[ ] Gitlab CI?
+	[ ] Maybe try and use Travis for Github CI?
+	[ ] Auto-push local/offline BuildMatrix results?
+	[ ] Auto-invoke BuildMatrix via Gitlab CI?
+
+[ ] Finalize/stablize public read-only interface of parsed solution.
+	[ ] Decide if I'm exposing project/folder parent folder/sln information (leaning towards no...)
+	[ ] Finish eliminating publicly exposed containers (e.g. the remaining GlobalSection dictionaries?)
+
+[ ] Create and publish initial nuget package.
+	[ ] Create .nuspec
+	[ ] Finalize AssemblyInfo.cs info
+	[ ] Index symbols?  (ssindex, https://oren.codes/2015/09/23/enabling-source-code-debugging-for-your-nuget-packages-with-gitlink/ )
+	[ ] Create checklist for publishing new versions (git tag, push, CI pass, ssindex - maybe gitlink?, 
+	[ ] Register on & upload to https://www.nuget.org/
+	[ ] Register on & upload to http://www.symbolsource.org/Public ?
+
+[ ] Generate & publish proper docs
+	[ ] Custom SSG?
+	[ ] Setup github pages:  https://help.github.com/articles/user-organization-and-project-pages/
+	[ ] Setup gitlab pages:  https://about.gitlab.com/2016/04/07/gitlab-pages-setup/#creating-new-project
