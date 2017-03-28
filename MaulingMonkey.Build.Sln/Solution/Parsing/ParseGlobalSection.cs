@@ -224,6 +224,8 @@ namespace MaulingMonkey.Build.Sln {
 		/// Maps projects and folders to their parent folders, if any.
 		/// </summary>
 		void ParseGlobalSection_NestedProjects(SolutionStreamReader reader) {
+			// Note: Whitespace (or more accurately, tabs) is extremely important here: https://twitter.com/aras_p/status/846643378481713153
+
 			// {ChildProjectGuid} = {ParentFolderGuid}
 			// {ChildFolderGuid}  = {ParentFolderGuid}
 			foreach (var line in GlobalSection_KeyValues(reader)) {
