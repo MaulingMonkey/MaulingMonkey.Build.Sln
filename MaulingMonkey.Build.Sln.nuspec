@@ -1,18 +1,20 @@
 <?xml version="1.0"?>
 <package >
 	<metadata>
-		<id>$id$</id>
-		<version>$version$</version>
-		<title>$title$</title>
+		<id>MaulingMonkey.Build.Sln</id>
+		<version>0.1.0</version>
 		<authors>MaulingMonkey</authors>
 		<owners>MaulingMonkey</owners>
 		<licenseUrl>https://github.com/MaulingMonkey/MaulingMonkey.Build.Sln/blob/master/LICENSE.txt</licenseUrl>
 		<projectUrl>https://github.com/MaulingMonkey/MaulingMonkey.Build.Sln/</projectUrl>
-		<!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
 		<description>MaulingMonkey's parser for Visual Studio / MonoDevelop / ??? Solution files (*.sln)</description>
 		<releaseNotes>Initial test of nuget packaging process.</releaseNotes>
 		<copyright>Copyright © MaulingMonkey 2017</copyright>
 		<tags>Solution Build sln</tags>
 	</metadata>
+	<files>
+		<file src="MaulingMonkey.Build.Sln\bin\Release\**\*.*" target="lib\net45" />
+		<file src="MaulingMonkey.Build.Sln\**\*.cs"             target="src"   />
+	</files>
 </package>
